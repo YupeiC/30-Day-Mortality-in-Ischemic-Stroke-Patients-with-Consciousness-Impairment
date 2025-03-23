@@ -24,19 +24,19 @@ st.write("Please input patient's clinical indicators:")
 col1, col2, col3 = st.columns(3)
 
 with col1:
-    ag = st.number_input('Anion Gap', value=15.0, format="%.1f")
-    ast = st.number_input('AST', value=27.0, format="%.1f")
-    age = st.number_input('Age', value=70, format="%d")
+    ag = st.number_input('Anion Gap (mEq/L)', value=15.0, format="%.1f")
+    ast = st.number_input('AST (IU/L)', value=27.0, format="%.1f")
+    age = st.number_input('Age (years)', value=70, format="%d")
 
 with col2:
-    ca = st.number_input('Calcium (Ca)', value=8.7, format="%.1f")
-    dbp = st.number_input('Diastolic BP', value=52.0, format="%.1f")
-    glucose = st.number_input('Glucose', value=112.0, format="%.1f")
+    ca = st.number_input('Calcium (Ca) (mg/dL)', value=8.7, format="%.1f")
+    dbp = st.number_input('Diastolic BP (mmHg)', value=52.0, format="%.1f")
+    glucose = st.number_input('Glucose (mg/dL)', value=112.0, format="%.1f")
 
 with col3:
-    na = st.number_input('Sodium (Na)', value=160.0, format="%.1f")
-    rr = st.number_input('Respiratory Rate', value=15.0, format="%.1f")
-    sbp = st.number_input('Systolic BP', value=94.0, format="%.1f")
+    na = st.number_input('Sodium (Na) (mEq/L)', value=160.0, format="%.1f")
+    rr = st.number_input('Respiratory Rate (times/minute)', value=15.0, format="%.1f")
+    sbp = st.number_input('Systolic BP (mmHg)', value=94.0, format="%.1f")
 
 # 创建预测按钮
 if st.button('Predict'):
@@ -127,13 +127,13 @@ st.sidebar.info("""
 # 添加特征说明
 st.sidebar.title("Feature Description")
 st.sidebar.markdown("""
-- AG: Anion Gap
-- AST: Aspartate Aminotransferase
-- Age: Patient Age
-- Ca: Calcium
-- DBP: Diastolic Blood Pressure
-- Glucose: Blood Glucose
-- Na: Sodium
-- RR: Respiratory Rate
-- SBP: Systolic Blood Pressure
+- AG: Anion Gap (mEq/L)
+- AST: Aspartate Aminotransferase (IU/L)
+- Age: Patient Age (years)
+- Ca: Calcium (mg/dL)
+- DBP: Diastolic Blood Pressure (mmHg)
+- Glucose: Blood Glucose (mg/dL)
+- Na: Sodium (mEq/L)
+- RR: Respiratory Rate (times/minute)
+- SBP: Systolic Blood Pressure (mmHg)
 """)
