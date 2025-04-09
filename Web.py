@@ -4,6 +4,11 @@ import numpy as np
 from joblib import load
 import shap
 import matplotlib.pyplot as plt
+try:
+    from catboost import CatBoostClassifier
+except ImportError:
+    st.error("无法导入 CatBoost 库。请确保已正确安装 CatBoost。")
+    st.stop()
 
 # 设置页面标题
 st.set_page_config(page_title="30-Day Mortality Risk Prediction Model for ICU Ischemic Stroke Patients with Consciousness Impairment", layout="wide")
@@ -11,8 +16,19 @@ st.set_page_config(page_title="30-Day Mortality Risk Prediction Model for ICU Is
 # 加载模型
 @st.cache_resource
 def load_model():
-    model = load('CatBoost.pkl')
-    return model
+    model_path = 'CatBoost.pkl'
+    if not os.path.exists(model_path):
+        st.error(f"模型文件 '{model_path}' 不存在！请确保模型文件在正确的位置。")
+        return None
+    try:
+        # 使用 CatBoost 自己的加载方法
+        model = CatBoostClassifier()
+        model.load_model(model_path)
+        return model
+    except Exception as e:
+        st.error(f"加载模型时出错: {str(e)}")
+        return None
+
 
 model = load_model()
 
